@@ -3,9 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "node-sass": "^4.9.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-beautiful-dnd-next": "^10.0.0-alpha.4",
+    "react-dom": "^16.5.2",
+    "react-pose": "^3.3.7",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.4",
+    "redux": "^4.0.0",
+    "redux-mock-store": "^1.5.3",
+    "redux-thunk": "^2.3.0",
+    "sass-loader": "^7.1.0",
+    "styled-components": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

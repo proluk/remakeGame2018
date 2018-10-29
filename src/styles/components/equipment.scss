@@ -1,0 +1,129 @@
+.Equipment{
+    height: 100%;
+    background-color: $backgroundColor;
+
+    &__nav {
+        width: 100%;
+        text-align: center;
+        margin-top:20px;
+        &__NavLink {
+            @include raisedButton;
+        }        
+    }
+
+    &__Items {
+        min-height: 50px;
+        &__ul {
+            @include boldBorder;
+            background-color: $elementsBackgroundColor;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            min-height: 60px;
+            align-items: center;
+            overflow-x: scroll;
+            &::-webkit-scrollbar { 
+                display: none; 
+            }
+
+            &__li {
+                @include boldBorder;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                background-color: $backgroundColor;
+                flex-shrink: 0;
+                
+                &--info {
+                    position: absolute;
+                    bottom:0;
+                    right: 0;
+                    background-color: $borderColor;
+                    color: $textColorSpecial;
+                    opacity: 0.5;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+    &__section {
+        display: flex;
+        flex-direction: row;
+        margin-top:10px;
+        justify-content: center;
+
+        &__article {
+            @include boldBorder;
+            background-color: $elementsBackgroundColor;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px;
+            span {
+                color: $textColorSpecial;
+            }
+
+        }
+
+        &__Equiped {
+            min-height: 50px;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            &__ul {
+                @include boldBorder;
+                background-color: $elementsBackgroundColor;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &__li {
+                    @include boldBorder;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    background-color: $backgroundColor;
+                    
+                    &--info {
+                        position: absolute;
+                        bottom:0;
+                        right: 0;
+                        background-color: $borderColor;
+                        color: $textColorSpecial;
+                        opacity: 0.5;
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+
+            &__span {
+                color: $textColorSpecial;
+                width: 100%;
+                text-align: center;
+            }
+        }        
+    }
+
+}

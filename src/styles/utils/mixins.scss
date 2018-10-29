@@ -1,0 +1,30 @@
+@import './variables';
+
+@mixin thinBorder() {
+    border-left:2px solid $borderColor;
+    border-right:2px solid $borderColor;
+    border-top:2px solid $borderColor;
+    border-bottom:2px solid $borderColor;
+}
+
+@mixin boldBorder() {
+    border-left:4px solid $borderColor;
+    border-right:4px solid $borderColor;
+    border-top:4px solid $borderColor;
+    border-bottom:4px solid $borderColor;
+}
+
+@mixin raisedButton() {
+    border-left:2px solid $borderColorLight;
+    border-right:2px solid $borderColor;
+    border-top:2px solid $borderColorLight;
+    border-bottom:2px solid $borderColor;
+    background-color: $elementsBackgroundColor;
+    color: $textColor;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+}

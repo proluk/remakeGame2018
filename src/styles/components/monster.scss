@@ -1,0 +1,26 @@
+.Monster {
+    position: absolute;
+    top:0;
+    left:0;
+    width: calc(100% - 8px);
+    @include boldBorder;
+    display: flex;
+    background-color: $elementsBackgroundColor;
+
+    &__div {
+        display: flex;
+        image-rendering: pixelated;
+
+        &__span {
+            font-weight: bold;
+        }
+    }
+
+    &__footer {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 0;
+        display: flex;
+        flex-direction: row;
+    }
+}

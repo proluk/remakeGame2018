@@ -1,0 +1,25 @@
+@import './variables';
+@import './mixins';
+@import './fonts';
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #423127;
+}
+
+.a {
+    color: darkred !important;
+}
+.d {
+    color: royalblue !important;
+}
+.m {
+    color: purple !important;
+}

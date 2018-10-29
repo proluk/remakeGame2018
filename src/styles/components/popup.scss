@@ -1,0 +1,16 @@
+.Popup{
+    position:absolute;
+    top:40px;
+    left:40px;
+    background-color: $elementsBackgroundColor;
+    @include boldBorder;
+    width: calc(100% - 88px);
+    height: calc(100% - 88px);
+    z-index: 100;
+
+    &--close {
+        position: absolute;
+        top:0;
+        right:0;
+    }
+}

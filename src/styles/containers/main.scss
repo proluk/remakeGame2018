@@ -1,0 +1,35 @@
+.Main {
+    background-color: $backgroundColor;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: bold;
+    width: 568px;
+    height: 320px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    
+    &__section {
+        width: 200px;
+        background-color: $elementsBackgroundColor;
+        @include boldBorder;
+        
+        &__header {
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+
+        &__nav {
+
+            &__NavLink {
+                color: $textColor;
+                text-decoration: none;
+            }
+
+            &__NavLink:hover {
+                color: $textColorSpecial;
+            }
+        }
+    }
+}

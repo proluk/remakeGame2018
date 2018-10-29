@@ -1,0 +1,70 @@
+.Fight {
+    background-color: $backgroundColor;
+    height: 100%;
+
+    &__section {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__header {
+            position: absolute;
+            top:5px;
+            font-weight: bold;
+            font-size: 15px;
+            color: $textColorSpecial;
+        }
+        &__footer{
+            position: absolute;
+            bottom:5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        &__ul {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            transform: scale(0.8);
+
+            &__li {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin:20px;
+
+                &__figure {
+                    image-rendering: pixelated;
+                    transform: scale(2);
+                    padding: 0;
+                    margin: 20px;
+                }
+
+                &__span {
+                    font-weight: bold;
+                    color: $textColorSpecial;
+                }
+            }
+        }
+
+        &--click {
+            @include raisedButton;
+        }
+
+    }
+}
+@media screen and (max-width: $dm560) {
+    .Fight {
+        &__section {
+            &__ul {
+                transform: scale(0.8)
+            }
+        }
+    }
+}

@@ -2,10 +2,10 @@ import {
     removeHealthI,
     removeHealthII,
 } from './debuffHelper'
-//test for level 4
+// TODO - minItemRange and minDebuffRange 
 export const createAttackItem = (level) => {
     let minRange = ((level - 3) < 0 ? 0 : (level - 3));
-    minRange = minRange > attackItem.length ? attackItem.length : minRange;
+    minRange = minRange > attackItem.length ? attackItem.length - 1 : minRange;
     const maxItemRange = level > attackItem.length ? attackItem.length : level;
     return {
         id: guid(),
@@ -16,37 +16,34 @@ export const createAttackItem = (level) => {
 }
 
 export const createDefenceItem = (level) => {
-    let minRange = (level - 3) < 0 ? 0 : (level - 3);
-    minRange = minRange > defenceItem.length ? defenceItem.length : minRange;
+    let minItemRange = (level - 3) < 0 ? 0 : (level - 3);
+    minItemRange = minItemRange > defenceItem.length ? defenceItem.length - 1 : minItemRange;
+    let minDebuffRange = (level -3) < 0 ? 0 : (level - 3)
+    minDebuffRange = minDebuffRange > defenceDebuffs.length ? defenceDebuffs.length - 1 : minDebuffRange;
     const maxItemRange = level > defenceItem.length ? defenceItem.length : level;
     const maxDebuffRange = level > defenceDebuffs.length ? defenceDebuffs.length : level;
     return {
         id: guid(),
         class: 'defence',
         strength: strength[Math.floor(Math.random() * strength.length)],
-        item: defenceItem[ Math.floor(Math.random() * (maxItemRange - minRange)) ],
-        debuffs: [defenceDebuffs[ Math.floor(Math.random() * (maxDebuffRange - minRange)) ]]
+        item: defenceItem[ Math.floor(Math.random() * (maxItemRange - minItemRange)) ],
+        debuffs: [defenceDebuffs[ Math.floor(Math.random() * (maxDebuffRange - minDebuffRange)) ]]
     }
 }
 
 export const createMagicItem = (level) => {
-    let minRange = (level - 3) < 0 ? 0 : (level - 3);
-    minRange = minRange > magicItem.length ? magicItem.length : minRange;
+    let minItemRange = (level - 3) < 0 ? 0 : (level - 3);
+    minItemRange = minItemRange > magicItem.length ? magicItem.length - 1 : minItemRange;
+    let minDebuffRange = (level -3) < 0 ? 0 : (level - 3)
+    minDebuffRange = minDebuffRange > magicDebuffs.length ? magicDebuffs.length - 1 : minDebuffRange;
     const maxItemRange = level > magicItem.length ? magicItem.length : level;
     const maxDebuffRange = level > magicDebuffs.length ? magicDebuffs.length : level;
     return {
         id: guid(),
         class: 'magic',
         strength: strength[Math.floor(Math.random() * strength.length)],
-        item: magicItem[ Math.floor(Math.random() * (maxItemRange - minRange)) ],
-        debuffs: [magicDebuffs[ Math.floor(Math.random() * (maxDebuffRange - minRange)) ]]
-    }
-}
-
-export const createResourceItem = (level) => {
-    return {
-        id: guid(),
-        class: 'resource'
+        item: magicItem[ Math.floor(Math.random() * (maxItemRange - minItemRange)) ],
+        debuffs: [magicDebuffs[ Math.floor(Math.random() * (maxDebuffRange - minDebuffRange)) ]]
     }
 }
 
@@ -79,14 +76,6 @@ const magicItem = [
     {name: 'Piece of Magic Paper', bonus: {price: 2}, icon:'magicPaper'},
     {name: 'Simple Wooden Wand', bonus: {price: 10}, icon:'simpleWoodenWand'},
     {name: 'Bone Dagger', bonus: {price: 15}, icon:'boneDagger'},
-];
-
-const resourceItem = [
-    {name: 'Potato', bonus: {price: 1}, icon: 'potato'},
-    {name: 'sandal', bonus: {price: 1}, icon: 'sandal'},
-    {name: 'rock', bonus: {price: 1}, icon: 'rock'},
-    {name: 'plank', bonus: {price: 1}, icon: 'plank'},
-    {name: 'beer', bonus: {price: 1}, icon: 'beer'},
 ];
 
 const magicDebuffs = [

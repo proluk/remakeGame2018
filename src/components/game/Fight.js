@@ -54,11 +54,9 @@ class Fight extends Component {
                 <Monster {...this.props} />
                 <Player {...this.props} />
                 <Popup open={this.props.game.showMonster}>
-                {/* monster intro */}
-                <MonsterIntro {...this.props} hide={this.hideMonsterPopup} />
+                    <MonsterIntro {...this.props} hide={this.hideMonsterPopup} />
                 </Popup>
                 <Popup open={this.props.game.showPickAction}>
-                {/* pick action and hide popup */}
                     <section className="Fight__section">
                         <header className="Fight__section__header">
                             Pick your Action
@@ -89,7 +87,6 @@ class Fight extends Component {
                 </section>
                 </Popup>
                 <Popup open={this.props.game.showRoundResolve}>
-                {/* show popup, draw result, show winner, hide popup */}
                 <section className="Fight__section">
                     <ul className="Fight__section__ul">
                         <li className="Fight__section__ul__li">

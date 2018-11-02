@@ -34,9 +34,17 @@ export const monsterActionSet = () => {
     }
 }
 
-export const monsterDebuffsClear = () => ({
+const monsterDebuffsClear = () => ({
     type: 'MONSTER_DEBUFFS_CLEAR',
 })
+
+export const monsterDebuffsRemove = () => {
+    return (dispatch, getState) => {
+        const {monster} = getState();
+        dispatch(monsterDebuffsClear());
+        dispatch(monsterBonusStatsSet(monster.attackItem, monster.defenceItem, monster.magicItem));
+    }
+}
 
 export const monsterDebuffSet = (debuff) => ({
     type: 'MONSTER_DEBUFF_SET',

@@ -56,9 +56,17 @@ export const playerActionSet = (action) => ({
     action,
 })
 
-export const playerDebuffsClear = () => ({
+const playerDebuffsClear = () => ({
     type: 'PLAYER_DEBUFFS_CLEAR',
 })
+
+export const playerDebuffsRemove = () => {
+    return (dispatch, getState) => {
+        const {player} = getState();
+        dispatch(playerDebuffsClear());
+        dispatch(playerBonusStatsSet(player.attackItem, player.defenceItem, player.magicItem));
+    }
+}
 
 export const playerDebuffSet = (debuff) => ({
     type: 'PLAYER_DEBUFF_SET',
@@ -78,7 +86,7 @@ export const playerMoneySet = (money) => ({
 export const playerLadyHeal = () => {
     return (dispatch,getState) => {
         const {player} = getState();
-        dispatch(playerDebuffsClear());
+        dispatch(playerDebuffsRemove());
         dispatch(playerHealthSet(parseInt(player.maxHealth) + parseInt(player.bonusStats.maxHealth) ))
     }
 }

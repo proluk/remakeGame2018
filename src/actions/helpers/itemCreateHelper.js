@@ -2,6 +2,10 @@ import _ from 'lodash'
 import {
     removeHealthI,
     removeHealthII,
+    removeHealthIII,
+    removeMaxHealthI,
+    removeAttackI,
+    removeDefenceI,
 } from './debuffHelper'
 
 export const createAttackItem = (level) => {
@@ -112,10 +116,13 @@ const magicItem = [
 const magicDebuffs = [
     removeHealthI,
     removeHealthII,
+    removeHealthIII,
 ];
 
 const defenceDebuffs = [
-    removeHealthI,
+    removeMaxHealthI,
+    removeAttackI,
+    removeDefenceI,
 ];
 
 function guid() {

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import {
-    playerDebuffsClear,
+    playerDebuffsRemove,
     playerDebuffSet,
     playerHealthSet,
     playerMoneySet,
@@ -8,10 +8,9 @@ import {
     playerStatsAffectedByDebuffsSet,
 } from './player'
 import {
-    monsterDebuffsClear,
+    monsterDebuffsRemove,
     monsterDebuffSet,
     monsterHealthSet,
-    monsterCreate,
     monsterStatsAffectedByDebuffsSet,
 } from './monster'
 
@@ -46,7 +45,7 @@ export const gameResolveRound = () => {
         } else if ( monster.action === 'attack' ) {
             if ( player.action === 'defence' ) {
                 if (player.debuffs.length > 0) {
-                    dispatch(playerDebuffsClear())
+                    dispatch(playerDebuffsRemove())
                 } else {
                     if ( player.defenceItem && player.defenceItem.debuffs.length > 0 ){
                         dispatch(monsterDebuffSet(drawDefenceDebuff(player)))
@@ -59,7 +58,7 @@ export const gameResolveRound = () => {
         } else if ( monster.action === 'defence' ) {
             if ( player.action === 'attack' ) {
                 if (monster.debuffs.length > 0) {
-                    dispatch(monsterDebuffsClear())
+                    dispatch(monsterDebuffsRemove())
                 } else {
                     if ( monster.defenceItem && monster.defenceItem.debuffs.length > 0 ){
                         dispatch(playerDebuffSet(drawDefenceDebuff(monster)))
@@ -97,7 +96,7 @@ const runEndRoundTimeout = () => {
                 dispatch(gameRoundResolvePopupHide())
                 dispatch(gameRoundEndPopupShow('monster'))
                 dispatch(monsterHealthSet(monster.maxHealth))
-                dispatch(monsterDebuffsClear())
+                dispatch(monsterDebuffsRemove())
             } else if ( monster.health <= 0 ) {
                 dispatch(gameRoundResolvePopupHide())
                 dispatch(gameRoundEndPopupShow('player'))

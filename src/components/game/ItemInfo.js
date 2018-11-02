@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import swordIcon from './icons/sword-icon.png'
 import shieldIcon from './icons/shield-icon.png'
 import moneyIcon from './icons/money-icon.png'
+import heartIcon from './icons/heart-icon.png'
 import {itemPictures} from './helpers/itemPictures'
 
 import {icons} from './helpers/iconPictures'
@@ -9,19 +10,17 @@ import {icons} from './helpers/iconPictures'
 const bonusToIconMap = {
     attack: swordIcon,
     defence: shieldIcon,
+    maxHealth: heartIcon,
     price: moneyIcon,
-
 }
 
-// {id: "1", class: "attack", strength: {…}, item: {…}}
-// class: "attack"
-// id: "1"
-// item:
-// bonus: {attack: 3, price: 5}
-// icon: "woodenSword"
-// name: "Wooden Sword"
-// __proto__: Object
-// strength: {name: "Weak", multiplier: 1}
+const strengthColor = {
+    'Weak' : '#000',
+    'Regular' : '#ffcc00',
+    'Well done' : '#cc2c34',
+    'Masterpiece' : '#ffb2f5',
+    'Legendary' : '#31FFFF',
+}
 
 class ItemInfo extends Component {
     render = () => {
@@ -42,7 +41,7 @@ class ItemInfo extends Component {
             {this.props.item &&
             <section className="ItemInfo">
                 <header className="ItemInfo__header">
-                    <span>{this.props.item.strength.name}</span> {this.props.item.item.name}
+                    <span style={{color: strengthColor[this.props.item.strength.name] }}>{this.props.item.strength.name}</span> {this.props.item.item.name}
                 </header>
                 <figure className="ItemInfo__figure">
                     <img src={itemPictures[this.props.item.item.icon]}  className="ItemInfo__figure__img"/>
@@ -65,7 +64,7 @@ class ItemInfo extends Component {
                         <li className="ItemInfo__nav__ul__li">
                             {this.props.blockSell ?
                             'cannot sell equiped item ' :
-                            <div onClick={() => this.props.sell()}>Sell for {this.props.item.price}</div>}
+                            <div onClick={() => this.props.sell()}>Sell</div>}
                         </li>
                     </ul>
                 </nav>    

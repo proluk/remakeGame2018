@@ -15,7 +15,6 @@ class Equipment extends Component {
             blockSell: false,
             popupopen: false,
             error: false,
-            errorMessage: '',
         }
     }
     onDragEnd = (res) => {
@@ -26,19 +25,16 @@ class Equipment extends Component {
             if ( res.destination.droppableId === 'attackItem' && this.props.player.items[res.source.index].class !== 'attack'){
                 this.setState({
                     error: true,
-                    errorMessage: 'You can only equip here item with class "Attack"'
                 })
                 return
             } else if (res.destination.droppableId === 'defenceItem' && this.props.player.items[res.source.index].class !== 'defence') {
                 this.setState({
                     error: true,
-                    errorMessage: 'You can only equip here item with class "Defence"'
                 })
                 return
             } else if (res.destination.droppableId === 'magicItem' && this.props.player.items[res.source.index].class !== 'magic') {
                 this.setState({
                     error: true,
-                    errorMessage: 'You can only equip here item with class "Magic"'
                 })
                 return
             }
@@ -159,7 +155,9 @@ class Equipment extends Component {
                     </Popup>
 
                     <Popup open={this.state.error} externalHide={this.closeError}>
-                        {this.state.errorMessage}
+                        <div className="Equipment__Popup__div">
+                            You can only equip an item with <span className="Equipment__Popup__div__span">matching</span> class.
+                        </div>
                     </Popup>
                 </main>
             </DragDropContext>

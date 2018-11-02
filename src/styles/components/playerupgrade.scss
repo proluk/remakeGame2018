@@ -1,0 +1,103 @@
+.PlayerUpgrade {
+    background-color: $backgroundColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    &__header {
+        font-weight: bold;
+        color: $textColorSpecial;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top:10px;
+        left:0;
+        justify-content: center;
+        width: 100%;
+        font-size: 25px;
+
+        &__img {
+            image-rendering: pixelated;
+            transform: scale(2);
+            margin-right: 20px;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        &__ul {
+            @include boldBorder;
+            display: flex;
+            flex-direction: column;
+            background-color: $elementsBackgroundColor;
+            width: 100%;
+            height: calc(100% - 8px);
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            &__li {
+                display: grid;
+                grid-template-columns:30px 40px auto 80px;
+                padding: 2px;
+
+                &__img {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    grid-column-start: 1;
+                    grid-column-end: 2;
+                    padding: 5px;
+                }
+
+                &__span {
+                    font-weight: bold;
+                    grid-column-start: 2;
+                    grid-column-end: 3;
+                    padding: 5px;
+                }
+
+                &__p {
+                    all:unset;
+                    color: rgba(0,0,0,0.3);
+                    font-size: 11px;
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+                    font-weight: bold;
+                    grid-column-start: 3;
+                    grid-column-end: 4;
+                }
+
+                &--click {
+                    @include raisedButton;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    grid-column-start: 4;
+                    grid-column-end: 5;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    &__nav {
+        position: absolute;
+        bottom:10px;
+        left:0;
+        width: 100%;
+        text-align: center;
+        &--click {
+            @include raisedButton;
+        }
+    }
+}

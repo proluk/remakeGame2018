@@ -10,13 +10,11 @@ class Wizard extends Component{
                     <img className="Character__figure__img" src={wizard} />
                 </figure>
                 <div className="Character__div">
-                    Hay there! Are you ready for a little fight?
+                    Hay there!
                 </div>
                 <nav className="Character__nav">
-                    {this.props.player.health > 0 ?
-                    <NavLink className="Character__nav__NavLink"  to={`/game/fight/${this.props.game.level}`}>Fight</NavLink>
-                    : <span>You must have some health to fight</span>}
-                    
+                    <div className="Character__nav__div" onClick={() => this.props.playerLadyHeal()}>Heal</div>
+                    <NavLink className="Character__nav__NavLink" to="/game/playerupgrade">Upgrade</NavLink>
                 </nav>
             </section>
         )

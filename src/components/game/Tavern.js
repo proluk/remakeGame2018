@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 import bartender from './graphics/bartender.gif'
 import wizard from './graphics/wizard.gif'
-import lady from './graphics/lady.gif'
+import warrior from './graphics/warrior.gif'
 import Popup from './Popup'
 import Player from './Player'
 import Bartender from './Bartender'
 import Wizard from './Wizard'
-import Lady from './Lady'
+import Warrior from './Warrior'
 
 class Tavern extends Component{
     constructor(props) {
@@ -14,7 +14,7 @@ class Tavern extends Component{
         this.state = {
             bartender: false,
             wizard: false,
-            lady: false,
+            warrior: false,
         }
     }
     hidePopup = (character) => {
@@ -42,8 +42,8 @@ class Tavern extends Component{
                         <img src={wizard} className="Tavern__section__div__img"/>
                         
                     </div>
-                    <div className="Tavern__section__div"  onClick={() => this.openPopup('lady')}>
-                        <img src={lady} className="Tavern__section__div__img"/>
+                    <div className="Tavern__section__div"  onClick={() => this.openPopup('warrior')}>
+                        <img src={warrior} className="Tavern__section__div__img"/>
                         
                     </div>
                 </section>
@@ -51,10 +51,10 @@ class Tavern extends Component{
                     <Bartender game={this.props.game} />
                 </Popup>
                 <Popup open={this.state.wizard} externalHide={() => this.hidePopup('wizard')}>
-                    <Wizard game={this.props.game} player={this.props.player} />
+                    <Wizard {...this.props} />
                 </Popup>
-                <Popup open={this.state.lady} externalHide={() => this.hidePopup('lady')}>
-                    <Lady {...this.props} />
+                <Popup open={this.state.warrior} externalHide={() => this.hidePopup('warrior')}>
+                    <Warrior {...this.props} />
                 </Popup>
                 <footer>
                     <Player {...this.props} />

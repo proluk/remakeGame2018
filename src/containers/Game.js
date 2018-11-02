@@ -4,9 +4,11 @@ import { Route, Switch} from 'react-router-dom'
 import posed, { PoseGroup } from 'react-pose'
 import Tavern from '../components/game/Tavern'
 import Equipment from '../components/game/Equipment'
+import PlayerUpgrade from '../components/game/PlayerUpgrade'
 import Fight from '../components/game/Fight'
 import '../styles/style.scss'
 import * as actions from './../actions'
+import FightPick from '../components/game/FightPick';
 
 
 const RouteContainer = posed.div({
@@ -22,6 +24,7 @@ class Game extends Component{
                     <Switch location={this.props.location}>
                         <Route exact path="/game" component={() => <Tavern {...this.props} />} />
                         <Route path="/game/equipment" component={() => <Equipment {...this.props} />} />
+                        <Route path="/game/playerupgrade" component={() => <PlayerUpgrade {...this.props}/> } />
                         <Route path="/game/fight/:level" component={() => <Fight {...this.props} />} />
                     </Switch>         
                 </RouteContainer>
@@ -44,9 +47,11 @@ const mapDispatchToProps = {
     playerActionSet: actions.playerActionSet,
     playerStatsAffectedByDebuffsSet: actions.playerStatsAffectedByDebuffsSet,
     playerLadyHeal: actions.playerLadyHeal,
+    playerBuyStat: actions.playerBuyStat,
 
     monsterActionSet: actions.monsterActionSet,
     monsterStatsAffectedByDebuffsSet: actions.monsterStatsAffectedByDebuffsSet,
+    monsterCreate: actions.monsterCreate,
 
     gameMonsterIntroShow: actions.gameMonsterIntroShow,
     gamePickActionPopupShow: actions.gamePickActionPopupShow,

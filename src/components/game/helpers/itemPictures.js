@@ -11,7 +11,9 @@ import bigWoodenShield from '../graphics/big-wooden-shield-item.png'
 import simpleVikingShield from '../graphics/simple-viking-shield-item.png'
 import reinforcedWoodenShield from '../graphics/reinforced-wooden-shield-item.png'
 
-import magicPaper from '../graphics/piece-of-magic-paper-item.gif'
+import magicPaperOfProtection from '../graphics/magic-paper-of-protection-item.gif'
+import magicPaperOfLife from '../graphics/magic-paper-of-life-item.gif'
+import magicPaperOfDeath from '../graphics/magic-paper-of-death-item.gif'
 import simpleWoodenWand from '../graphics/simple-wooden-wand-item.gif'
 import boneDagger from '../graphics/bone-dagger-item.gif'
 
@@ -35,7 +37,9 @@ export const itemPictures = {
     simpleVikingShield,
     reinforcedWoodenShield,
 
-    magicPaper,
+    magicPaperOfProtection,
+    magicPaperOfLife,
+    magicPaperOfDeath,
     simpleWoodenWand,
     boneDagger,
 

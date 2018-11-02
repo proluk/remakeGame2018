@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export const playerEquipmentUpdate = (res) => {
     return (dispatch, getState) => {
         let { player } = getState();
@@ -77,7 +79,7 @@ export const playerLadyHeal = () => {
     return (dispatch,getState) => {
         const {player} = getState();
         dispatch(playerDebuffsClear());
-        dispatch(playerHealthSet(player.maxHealth))
+        dispatch(playerHealthSet(parseInt(player.maxHealth) + parseInt(player.bonusStats.maxHealth) ))
     }
 }
 const playerItemsSet = (items, attackItem, defenceItem, magicItem) => ({
@@ -95,7 +97,7 @@ export const playerItemsAdd = (items) => ({
 const playerBonusStatsSet = (attackItem, defenceItem, magicItem) => {
     return (dispatch, getState) => {
         let { player } = getState();
-        let clone = Object.assign({},player)
+        let clone = _.cloneDeep(player)
         for (const bonus in clone.bonusStats) {
             clone.bonusStats[bonus] = 0;
         }
@@ -118,6 +120,9 @@ const playerBonusStatsSet = (attackItem, defenceItem, magicItem) => {
             type: 'PLAYER_BONUSSTATS_SET',
             bonusStats: clone.bonusStats
         })
+        if(clone.health > (parseInt(clone.maxHealth) + parseInt(clone.bonusStats.maxHealth))) {
+            dispatch(playerHealthSet( parseInt(clone.maxHealth) + parseInt(clone.bonusStats.maxHealth) ))
+        } 
     }
 }
 
@@ -126,4 +131,28 @@ const playerBonusStatsSet = (attackItem, defenceItem, magicItem) => {
 export const playerStatsAffectedByDebuffsSet = (clone) => ({
     type: 'PLAYER_STATSAFFECTEDBYDEBUFFS_SET',
     clone,
+})
+
+
+export const playerBuyStat = (stat) => {
+    return (dispatch, getState) => {
+        const {player} = getState();
+        let clone = _.cloneDeep(player)
+        dispatch(playerMoneySet(player.money - (player.upgrades[stat] * 10) ))
+        clone.upgrades[stat] = clone.upgrades[stat] + 1;
+        clone[stat] = clone[stat] + 1;
+        dispatch(playerUpgradesSet(clone.upgrades))
+        dispatch(playerBaseStatsSet(clone.maxHealth, clone.attack, clone.defence))
+    }
+}
+const playerUpgradesSet = (upgrades) => ({
+    type: 'PLAYER_UPGRADES_SET',
+    upgrades
+})
+
+const playerBaseStatsSet = (maxHealth, attack, defence) => ({
+    type: 'PLAYER_BASESTATS_SET',
+    maxHealth,
+    attack,
+    defence,
 })

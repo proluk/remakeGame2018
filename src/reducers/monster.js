@@ -1,35 +1,23 @@
-import Hobo from '../components/game/graphics/hobo.gif'
 
 const initialState = {
-    name: 'Aggresive Hobo',
-    line: 'I am agressive, wanna fight?',
+    name: '',
+    line: '',
     maxHealth: 1,
     health: 1,
     attack: 1,
     defence: 0,
     money: 0,
     attackItem: null,
-    defenceItem: { 
-        id: '2',
-        class: 'defence',
-        strength: { name: 'Weak', multiplier: 1 },
-        item: { name: 'Wooden Shield',bonus: { defence: 1, price: 5 },icon: 'woodenShield' },
-        debuffs: [{name:'removeHealthI', icon:'removeHealthI', description:'Removes health every round', connectedFunctionName:'removeHealthI'}]
-    },
-    magicItem: {
-        id: '3',
-        class: 'magic',
-        strength: { name: 'Destroyed', multiplier: 0 },
-        item: { name: 'Piece of Magic Paper', bonus: { price: 1 }, icon: 'magicPaper'},
-        debuffs: [{name:'removeHealthI', icon:'removeHealthI', description:'Removes health every round', connectedFunctionName:'removeHealthI'}]
-    },
+    defenceItem: null,
+    magicItem: null,
     bonusStats: {
         attack: 0,
         defence: 0,
     },
     action: null,
     debuffs: [],
-    picture: Hobo,
+    picture: null,
+    level: 0,
 }
 
 export const monster = (state = initialState, action) => {
@@ -53,6 +41,11 @@ export const monster = (state = initialState, action) => {
             return {
                 ...state,
                 health: action.health
+            }
+        case 'MONSTER_BONUSSTATS_SET':
+            return {
+                ...state,
+                bonusStats: action.bonusStats
             }
         case 'MONSTER_CREATE':
             return action.payload

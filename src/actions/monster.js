@@ -1,4 +1,5 @@
 import {monsterCreateHelper} from './helpers/monsterCreateHelper'
+import _ from 'lodash'
 
 export const monsterActionSet = () => {
     return (dispatch, getState) => {
@@ -47,12 +48,11 @@ export const monsterHealthSet = (health) => ({
     health
 })
 
-export const monsterCreate = () => {
-    return (dispatch, getState) => {
-        const {game} = getState()
+export const monsterCreate = (level) => {
+    return dispatch => {
         dispatch({
             type: 'MONSTER_CREATE',
-            payload: monsterCreateHelper(game.level)
+            payload: monsterCreateHelper(level)
         })
         dispatch(monsterBonusStatsSet())
     }
@@ -61,7 +61,7 @@ export const monsterCreate = () => {
 const monsterBonusStatsSet = () => {
     return (dispatch, getState) => {
         const { monster } = getState();
-        let clone = Object.assign({},monster)
+        let clone = _.cloneDeep(monster)
         for (const bonus in clone.bonusStats) {
             clone.bonusStats[bonus] = 0;
         }
@@ -81,7 +81,7 @@ const monsterBonusStatsSet = () => {
             }
         }
         dispatch({
-            type: 'monster_BONUSSTATS_SET',
+            type: 'MONSTER_BONUSSTATS_SET',
             bonusStats: clone.bonusStats
         })
     }

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
     playerDebuffsClear,
     playerDebuffSet,
@@ -89,20 +90,19 @@ export const gameResolveRound = () => {
 }
 
 const runEndRoundTimeout = () => {
-    console.log('end round')
     return (dispatch, getState) => {
         const {monster, player} = getState();
         setTimeout(() => {
-            if ( monster.health <= 0 ) {
-                dispatch(gameRoundResolvePopupHide())
-                dispatch(gameRoundEndPopupShow('player'))
-                dispatch(gameRewardPlayer())
-                dispatch(gamePrepareNextLevel())
-            } else if ( player.health <= 0 ) {
+            if ( player.health <= 0 ) {
                 dispatch(gameRoundResolvePopupHide())
                 dispatch(gameRoundEndPopupShow('monster'))
                 dispatch(monsterHealthSet(monster.maxHealth))
                 dispatch(monsterDebuffsClear())
+            } else if ( monster.health <= 0 ) {
+                dispatch(gameRoundResolvePopupHide())
+                dispatch(gameRoundEndPopupShow('player'))
+                dispatch(gameRewardPlayer())
+                dispatch(gamePrepareNextLevel())
             } else {
                 dispatch(gameRoundResolvePopupHide())
                 dispatch(gamePickActionPopupShow())
@@ -115,16 +115,18 @@ const gameLevelAdd = () => ({
 })
 
 const gamePrepareNextLevel = () => {
-    return dispatch => {
-        dispatch(gameLevelAdd())
-        dispatch(monsterCreate()); 
+    return (dispatch, getState) => {
+        const {game, monster} = getState();
+        if ( game.level === monster.level) {
+           dispatch(gameLevelAdd()) 
+        }
     }
 }
 
 const gameRewardPlayer = () => {
     return (dispatch, getState) => {
         const {player} = getState()
-        let clone = Object.assign({}, getState().monster)
+        let clone = _.cloneDeep(getState().monster)
         let items = []
         if (clone.attackItem){
             items.push(clone.attackItem)
@@ -157,8 +159,8 @@ const runDebuffs = () => {
     return (dispatch, getState) => {
         const {monster, player} = getState();
 
-        let monsterClone = Object.assign({}, monster)
-        let playerClone = Object.assign({}, player)
+        let monsterClone = _.cloneDeep(monster)
+        let playerClone = _.cloneDeep(player)
 
         for( const debuff in monster.debuffs){
             debuffConnectedFunctions[monster.debuffs[debuff].connectedFunctionName].call(monsterClone)

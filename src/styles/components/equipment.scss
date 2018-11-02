@@ -2,6 +2,20 @@
     height: 100%;
     background-color: $backgroundColor;
 
+    &__Popup {
+        
+        &__div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-weight: bold;
+            &__span {
+                color: $textColorSpecial;
+            }
+        }
+    }
+
     &__nav {
         width: 100%;
         text-align: center;

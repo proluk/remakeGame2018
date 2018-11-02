@@ -25,7 +25,9 @@ class Player extends Component {
             <div className="Player">
                 <div className="Player__div">
                     <img src={heartIcon} className="Player__div__img"/>
-                    <span className="Player__div__span">{this.props.player.health}</span>
+                    <span className="Player__div__span">
+                        {this.props.player.health}/{ parseInt(this.props.player.maxHealth) + parseInt(this.props.player.bonusStats.maxHealth)}
+                    </span>
                 </div>            
                 <div className="Player__div">
                     <img src={swordIcon}/>

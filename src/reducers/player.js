@@ -1,23 +1,22 @@
 const initialState = {
     maxHealth: 10,
     health: 10,
-    attack: 1,
+    attack: 2,
     defence: 0,
     money: 0,
-    items: [
-        { 
-            id: '1',
-            class: 'attack',
-            strength: { name: 'Weak', multiplier: 1 },
-            item: { name: 'Wooden Sword', bonus: { attack: 3, price: 5 }, icon: 'woodenSword' },
-        }
-    ],
+    items: [],
     attackItem: null,
     defenceItem: null,
     magicItem: null,
     bonusStats: {
         attack: 0,
         defence: 0,
+        maxHealth: 0,
+    },
+    upgrades: {
+        attack: 1,
+        defence: 1,
+        maxHealth: 1,
     },
     action: null,
     debuffs: []
@@ -77,6 +76,18 @@ export const player = (state = initialState, action) => {
                 ...state,
                 health: action.clone.health,
                 bonusStats: {...action.clone.bonusStats}
+            }
+        case 'PLAYER_UPGRADES_SET':
+            return {
+                ...state,
+                upgrades: action.upgrades
+            }
+        case 'PLAYER_BASESTATS_SET':
+            return {
+                ...state,
+                maxHealth: action.maxHealth,
+                attack: action.attack,
+                defence: action.defence,
             }
         default:
             return {

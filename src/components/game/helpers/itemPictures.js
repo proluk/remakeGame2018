@@ -4,6 +4,7 @@ import woodenSword from '../graphics/wooden-sword-item.png'
 import simpleSword from '../graphics/simple-sword-item.png'
 import simpleHammer from '../graphics/simple-hammer-item.png'
 import huntingBow from '../graphics/hunting-bow-item.png'
+import doubleAxe from '../graphics/double-axe.png'
 import twoHandSword from '../graphics/two-hand-sword.png'
 
 import plank from '../graphics/plank-item.png'
@@ -31,6 +32,7 @@ export const itemPictures = {
     simpleSword,
     simpleHammer,
     huntingBow,
+    doubleAxe,
     twoHandSword,
 
     plank,

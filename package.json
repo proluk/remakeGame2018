@@ -1,12 +1,15 @@
 {
+  "homepage": "https://proluk.github.io/remakeGame2018",
   "name": "remakegame2018",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "cypress": "^3.1.0",
+    "electron-builder": "^20.31.2",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3.4",
+    "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.9.3",
     "prop-types": "^15.6.2",
@@ -28,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,5 +43,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "electron": "^4.0.0-nightly.20181010"
+  }
 }

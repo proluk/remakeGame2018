@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/remakeGame2018/precache-manifest.a6a97143713dbf862df95e8b60ac3f35.js"
+  "/remakeGame2018/precache-manifest.f521376055a9506fed34626c393e594f.js"
 );
 
 workbox.clientsClaim();

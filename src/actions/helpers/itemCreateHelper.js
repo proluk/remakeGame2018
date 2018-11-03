@@ -94,6 +94,7 @@ const attackItem = [
     {name: 'Simple Sword', bonus: {attack:3, price:5}, icon:'simpleSword'},
     {name: 'Simple Hammer', bonus: {attack:5, defence: -1, price:7}, icon:'simpleHammer'},
     {name: 'Hunting Bow', bonus: {attack:7, defence: -3, price:9}, icon:'huntingBow'},
+    {name: 'Two Hand Sword', bonus: {attack: 8, price: 11}, icon: 'twoHandSword'},
 ];
 
 const defenceItem = [

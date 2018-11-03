@@ -57,7 +57,7 @@ class Tavern extends Component{
                     <Warrior {...this.props} />
                 </Popup>
                 <footer>
-                    <Player {...this.props} />
+                    <Player {...this.props} allStats={true} />
                 </footer> 
             </main>
         )

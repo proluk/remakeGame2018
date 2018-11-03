@@ -17,9 +17,25 @@
         }
         &__footer{
             position: absolute;
-            bottom:5px;
+            bottom:0px;
             font-weight: bold;
             font-size: 12px;
+            width: 100%;
+            text-align: center;
+            &__NavLink {
+                text-decoration: none;
+                color: $textColorSpecial;
+                font-size: 10px;
+                position: absolute;
+                bottom:0;
+                right:0;
+                padding: 3px;
+                background-color: rgba(0,0,0,0.2);
+            }
+            &__NavLink:hover {
+                cursor: pointer;
+                background-color: rgba(0,0,0,0.5);
+            }
         }
         
         &__ul {

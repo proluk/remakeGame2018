@@ -11,7 +11,12 @@ class Monster extends Component {
     render = () => {
         const debuffs = this.props.monster.debuffs.map((el,i )=> {
             return (
-                <img key={i} src={icons[el.icon]} />
+                <div className="Monster__div" key={i}>
+                    <img src={icons[el.icon]} />
+                    <div className="Monster__div__div">
+                        <span className="Monster__div__div__span">{el.name}</span> {el.description}
+                    </div>
+                </div>
             )
         })
         return (

@@ -42,6 +42,7 @@
             flex-direction: row;
             margin-right: 5px;
             font-weight: bold;
+            image-rendering: pixelated;
             &__div{
                 display: none;
                 position: absolute;

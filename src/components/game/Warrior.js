@@ -14,7 +14,9 @@ class Warrior extends Component{
                         </figure>
                         <span className="Warrior__span">Pick monster you want to fight with</span>
                     </div>
-                    <FightPick {...this.props} />          
+                    {this.props.player.health > 0 ?
+                    <FightPick {...this.props} />   
+                    : <span>You need to have some health if you want to fight</span>}  
                 </section>
             </section>
         )

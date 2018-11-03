@@ -15,14 +15,38 @@ export const debuffConnectedFunctions = {
             this.health = this.maxHealth + this.bonusStats.maxHealth;
         }
     },
+    removeMaxHealthII: function(){
+        this.bonusStats.maxHealth = this.bonusStats.maxHealth - 2
+        if ( this.health > this.maxHealth + this.bonusStats.maxHealth ) {
+            this.health = this.maxHealth + this.bonusStats.maxHealth;
+        }
+    },
+    removeMaxHealthIII: function(){
+        this.bonusStats.maxHealth = this.bonusStats.maxHealth - 3
+        if ( this.health > this.maxHealth + this.bonusStats.maxHealth ) {
+            this.health = this.maxHealth + this.bonusStats.maxHealth;
+        }
+    },
 
     removeAttackI: function(){
-        this.bonusStats.attack = this.bonusStats.attack - 1
+        this.bonusStats.attack = this.bonusStats.attack - 2
+    },
+    removeAttackII: function(){
+        this.bonusStats.attack = this.bonusStats.attack - 4
+    },
+    removeAttackIII: function(){
+        this.bonusStats.attack = this.bonusStats.attack - 6
     },
 
     removeDefenceI: function(){
         this.bonusStats.defence = this.bonusStats.defence - 1
-    }
+    },
+    removeDefenceII: function(){
+        this.bonusStats.defence = this.bonusStats.defence - 2
+    },
+    removeDefenceIII: function(){
+        this.bonusStats.defence = this.bonusStats.defence - 3
+    },
     
 }
 //TODO - remove defence, remove attack, steal attack, steal defence, steal health
@@ -51,21 +75,61 @@ export const removeHealthIII = {
 
 export const removeMaxHealthI = {
     name:'removeMaxHealthI',
-    icon:'removeHealthI',
-    description:'Removes bonus max health by 1',
+    icon:'removeMaxHealthI',
+    description:'Removes max health by 1',
     connectedFunctionName:'removeMaxHealthI',
 }
 
 export const removeAttackI = {
     name:'removeAttackI',
-    icon:'removeHealthI',
-    description:'Removes bonus attack by 1',
+    icon:'removeAttackI',
+    description:'Removes attack by 2',
     connectedFunctionName:'removeAttackI',
 }
 
 export const removeDefenceI = {
     name:'removeDefenceI',
-    icon:'removeHealthI',
-    description:'Removes bonus defence by 1',
+    icon:'removeDefenceI',
+    description:'Removes defence by 1',
     connectedFunctionName:'removeDefenceI',
+}
+export const removeMaxHealthII = {
+    name:'removeMaxHealthII',
+    icon:'removeMaxHealthII',
+    description:'Removes max health by 2',
+    connectedFunctionName:'removeMaxHealthII',
+}
+
+export const removeAttackII = {
+    name:'removeAttackII',
+    icon:'removeAttackII',
+    description:'Removes attack by 4',
+    connectedFunctionName:'removeAttackII',
+}
+
+export const removeDefenceII = {
+    name:'removeDefenceII',
+    icon:'removeDefenceII',
+    description:'Removes defence by 2',
+    connectedFunctionName:'removeDefenceII',
+}
+export const removeMaxHealthIII = {
+    name:'removeMaxHealthIII',
+    icon:'removeMaxHealthIII',
+    description:'Removes max health by 3',
+    connectedFunctionName:'removeMaxHealthIII',
+}
+
+export const removeAttackIII = {
+    name:'removeAttackIII',
+    icon:'removeAttackIII',
+    description:'Removes attack by 6',
+    connectedFunctionName:'removeAttackIII',
+}
+
+export const removeDefenceIII = {
+    name:'removeDefenceIII',
+    icon:'removeDefenceIII',
+    description:'Removes defence by 3',
+    connectedFunctionName:'removeDefenceIII',
 }

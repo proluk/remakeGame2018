@@ -41,11 +41,27 @@ export const gameResolveRound = () => {
         const {monster, player} = getState();
 
         if ( monster.action === player.action ) {
-            //call draw
+            if ( player.action === 'defence' ) {
+                dispatch(playerDebuffsRemove())
+                dispatch(monsterDebuffsRemove())
+            } else if ( player.action === 'attack' ) {
+                const playerHealth = player.health - countDamage(monster, player)
+                const monsterHealth = monster.health - countDamage(player,monster)
+                dispatch(playerHealthSet(playerHealth))                
+                dispatch(monsterHealthSet(monsterHealth))
+            } else if ( player.action === 'magic' ) {
+                if ( player.magicItem ) {
+                    dispatch(monsterDebuffSet(drawMagicDebuff(player)))   
+                }
+                if ( monster.magicItem ) {
+                    dispatch(playerDebuffSet(drawMagicDebuff(monster)))    
+                }
+            }
         } else if ( monster.action === 'attack' ) {
             if ( player.action === 'defence' ) {
+                dispatch(playerDebuffsRemove())
                 if (player.debuffs.length > 0) {
-                    dispatch(playerDebuffsRemove())
+                    // dispatch(playerDebuffsRemove())
                 } else {
                     if ( player.defenceItem && player.defenceItem.debuffs.length > 0 ){
                         dispatch(monsterDebuffSet(drawDefenceDebuff(player)))
@@ -56,9 +72,10 @@ export const gameResolveRound = () => {
                 dispatch(playerHealthSet(health))
             }
         } else if ( monster.action === 'defence' ) {
+            dispatch(monsterDebuffsRemove())
             if ( player.action === 'attack' ) {
                 if (monster.debuffs.length > 0) {
-                    dispatch(monsterDebuffsRemove())
+                    // dispatch(monsterDebuffsRemove())
                 } else {
                     if ( monster.defenceItem && monster.defenceItem.debuffs.length > 0 ){
                         dispatch(playerDebuffSet(drawDefenceDebuff(monster)))
@@ -74,6 +91,7 @@ export const gameResolveRound = () => {
                 let health = monster.health - countDamage(player,monster)
                 dispatch(monsterHealthSet(health))
             } else if ( player.action === 'defence' ) {
+                dispatch(playerDebuffsRemove())
                 if ( monster.magicItem ) {
                     dispatch(playerDebuffSet(drawMagicDebuff(monster)))    
                 }

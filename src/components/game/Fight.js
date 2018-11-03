@@ -82,7 +82,8 @@ class Fight extends Component {
                             </li>
                         </ul>
                         <footer className="Fight__section__footer">
-                            Attack beats Magic. Magic beats Defence. Defence beats Attack. 
+                            Attack beats Magic. Magic beats Defence. Defence beats Attack.
+                            <NavLink to="/game" className="Fight__section__footer__NavLink">Surrender</NavLink>
                         </footer>
                 </section>
                 </Popup>

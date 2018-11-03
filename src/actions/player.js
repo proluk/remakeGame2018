@@ -21,9 +21,17 @@ export const playerEquipmentUpdate = (res) => {
         } else {
             if (res.destination.droppableId === 'items'){
                 if (player.items[res.destination.index]) {
-                    let tmp = player.items[res.destination.index]
-                    player.items[res.destination.index] = player[res.source.droppableId]
-                    player[res.source.droppableId] = tmp
+                    if (player.items[res.destination.index].class === player[res.source.droppableId].class) {
+                        let tmp = player.items[res.destination.index]
+                        player.items[res.destination.index] = player[res.source.droppableId]
+                        player[res.source.droppableId] = tmp                        
+                    } else {
+                        let tmp = player.items[res.destination.index]
+                        player.items[res.destination.index] = player[res.source.droppableId]
+                        player.items.push( tmp )
+                        player[res.source.droppableId] = null
+                    }
+
                 } else {
                     player.items[res.destination.index] = player[res.source.droppableId]
                     player[res.source.droppableId] = null

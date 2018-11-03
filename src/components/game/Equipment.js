@@ -140,7 +140,7 @@ class Equipment extends Component {
                         <span className="d">Defence</span> beats <span className="a">Attack</span>. 
                         But also, when <span className="a">Attack</span> wins it Deals Damage.
                         When <span className="m">Magic</span> wins it Curses Enemy.
-                        When <span className="d">Defence</span> wins it Removes Curses
+                        <span className="d">Defence</span> Removes Curses
                         or Gives Curses to Enemy when Player is <span>Curse Free</span>.
                         </article>
                     </section>

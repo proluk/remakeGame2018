@@ -10,10 +10,29 @@
     &__div {
         display: flex;
         image-rendering: pixelated;
-
+        &__div{
+            display: none;
+            position: absolute;
+            top:0;
+            right: 0;
+            opacity: 0.7;
+            background-color: $backgroundColor;
+            @include thinBorder;
+            padding: 5px;
+            color: #fff;
+            z-index: 400;
+            font-size: 12px;
+            max-width: 200px;
+            &__span{
+                color: $textColorSpecial
+            }
+        }
         &__span {
             font-weight: bold;
         }
+    }
+    &__div:hover &__div__div{
+        display: block;
     }
 
     &__footer {

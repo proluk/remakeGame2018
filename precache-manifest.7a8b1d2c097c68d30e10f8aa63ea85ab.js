@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/remakeGame2018/static/css/main.658792e6.chunk.css"
   },
   {
-    "revision": "00dfd9b3a8d064d941aa3a824a441d99",
+    "revision": "3257afdd15338da1b331f85b6fe4c72f",
     "url": "/remakeGame2018/index.html"
   }
 ];
